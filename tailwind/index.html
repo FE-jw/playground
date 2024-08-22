@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<title>tailwind</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		:root	{
+			font-size:10px;
+			--evtW: 960;
+			--h1: 500;
+		}
+		.section	{position:relative;}
+		.section img	{width:100%;vertical-align:top;}
+		.reward	{
+			--w: 100;
+			--h: 100;
+
+			li	{width:calc(var(--w) * 100% / var(--evtW));height:calc(var(--h) * 100% / var(--h1));position:absolute;}
+		}
+	</style>
+</head>
+<body>
+<div class="wrap flex">
+	<div class="section">
+		<img src="https://placehold.co/960x500/000/ff0" alt="">
+		<ul class="reward">
+			<li class="left-0 top-[5%] bg-[#d33]">1</li>
+			<li class="left-[20%] top-[20%] bg-[#ff0]">2</li>
+			<li class="left-[40%] top-[40%] bg-[royalblue]">3</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

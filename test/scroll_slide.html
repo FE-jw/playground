@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<title>test</title>
+	<style>
+		*	{margin:0;padding:0;}
+		.section	{height:100vh;position:relative;background-color:tomato;
+			&:nth-child(even)	{background-color:lightyellow;}
+			&:nth-child(2)	{height:500vh;}
+		}
+		.sticky	{height:100vh;position:sticky;top:0;
+			-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			overflow:hidden;
+		}
+		.slider	{width:500px;height:300px;margin:0 auto;background-color:#333;transform:translateY(50px);}
+		.slide-wrapper	{display:flex;flex-wrap:nowrap;width:300%;height:100%;}
+		.slide	{width:100%;height:100%;background-color:#d33;
+			&:nth-child(even)	{background-color:royalblue;}
+		}
+
+		.circle	{width:200px;height:200px;position:absolute;left:50%;top:50%;background-color:#d33;clip-path:circle(10.0% at 50% 50%);}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<div class="section">
+		<div class="circle"></div>
+	</div>
+	<div class="section sticky-wrap">
+		<div class="sticky">
+			<div id="slider" class="slider">
+				<div class="slide-wrapper">
+					<div class="slide">1</div>
+					<div class="slide">2</div>
+					<div class="slide">3</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section"></div>
+	<div class="section"></div>
+	<div class="section"></div>
+</div>
+<script>
+	const scrollSlider = {
+		slider: document.getElementById('slider'),
+		section: document.querySelector('.sticky-wrap'),
+		getValue(){
+			const stickyStart = window.scrollY + this.section.getBoundingClientRect().top;
+			const stickyEnd = window.scrollY + this.section.getBoundingClientRect().bottom;
+			const stickyHeight = this.section.clientHeight;
+			const childHeight = this.section.querySelector('.sticky').clientHeight;
+			const currentBottom = window.scrollY + window.innerHeight;
+			const isStart = window.scrollY >= stickyStart;
+			const isEnd = currentBottom >= stickyEnd;
+
+			return { stickyStart, stickyEnd, stickyHeight, childHeight, currentBottom, isStart, isEnd };
+		},
+		setResizeProperty(){
+			const { stickyStart, stickyHeight, childHeight } = this.getValue();
+
+			this.section.style.setProperty('--sticky-top', stickyStart + 'px');
+			this.section.style.setProperty('--sticky-wrap-height', stickyHeight + 'px');
+			this.section.style.setProperty('--sticky-height', childHeight + 'px');
+		},
+		init(){
+			window.addEventListener('scroll', () => {
+				const { isStart, isEnd } = this.getValue();
+
+				if(isStart && !isEnd){
+					console.log('ing');
+					this.section.style.setProperty('--window-top', window.scrollY + 'px');
+				}
+			});
+
+			window.addEventListener('resize', () => {
+				this.setResizeProperty();
+			});
+			window.addEventListener('load', () => {
+				this.setResizeProperty();
+			});
+		}
+	};
+
+	scrollSlider.init();
+</script>
+</body>
+</html>
