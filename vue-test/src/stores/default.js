@@ -1,18 +1,22 @@
 import { reactive } from 'vue';
 import { defineStore } from 'pinia';
 
-export const defaultStore = defineStore('default', () => {
+export const useDefaultStore = defineStore('default', () => {
   // state
   const state = reactive({
-    name: 'jw'
+    name: 'jw',
+    selectedValue: ''
   });
 
-  // actions
-  const actions = {
-    init() {
-      console.log('init');
+  // action
+  const action = {
+    addName() {
+      state.name += '+';
+    },
+    resetName() {
+      state.name = '';
     }
   };
 
-  return { state, actions };
+  return { state, action };
 });
