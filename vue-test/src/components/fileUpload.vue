@@ -91,7 +91,6 @@ const reverseOrder = () => {
 
     &:disabled {
       pointer-events: none;
-      //   visibility: hidden;
     }
   }
 
