@@ -30,6 +30,7 @@ const totalDataLength = ref(0);
 const uploadFile = (evt) => {
   console.log(evt.target.files[0]);
   if (evt.target.files.length > 0) {
+    console.log(evt.target.name);
     isUploaded.value = true;
   }
 
