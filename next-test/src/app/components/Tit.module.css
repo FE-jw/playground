@@ -1,0 +1,8 @@
+.main {
+  padding: 5px;
+  line-height: 1.3;
+  font-size: 40px;
+  font-weight: 900;
+  color: #d33;
+  background: #000 url('/img/100.jpg') no-repeat 100% 50% / auto 100%;
+}

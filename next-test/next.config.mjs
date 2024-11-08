@@ -1,8 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  compiler: {
-    styledComponents: true,
-  },
-}
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
-export default nextConfig
+const nextConfig = {
+  // extends: ['plugin:prettier/recommended'],
+  reactStrictMode: false,
+  rules: {
+    'prettier/prettier': 'error' // Prettier와 충돌하는 ESLint 규칙 비활성화
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss, autoprefixer]
+    }
+  }
+};
+
+export default nextConfig;

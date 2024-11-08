@@ -1,5 +1,3 @@
 {
-  "editor.formatOnSave": true,
-  "editor.tabSize": 2,
-  // "editor.defaultFormatter": "esbenp..-vscode",
+	"editor.formatOnSave": true
 }
