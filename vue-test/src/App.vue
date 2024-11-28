@@ -17,9 +17,7 @@
       <div><img :src="yon.image" alt="" /></div>
     </template>
     <fileUpload />
-    <!-- <naver-map style="width: 100%; height: 400px" :map-options="mapOptions">
-      <naver-marker latitude="37.51347" longitude="127.041722" />
-    </naver-map> -->
+    <myDatePicker />
   </div>
 </template>
 
@@ -32,9 +30,9 @@ import { useDefaultStore } from './stores/default.js';
 
 // Components
 import fileUpload from './components/fileUpload.vue';
+import myDatePicker from './components/myDatePicker.vue';
 import Multiselect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.css';
-// import { NaverMap, NaverMarker } from 'vue3-naver-maps';
 
 // store
 const { state: defaultState, action: defaultAction } = useDefaultStore();
