@@ -17,25 +17,26 @@
       <div><img :src="yon.image" alt="" /></div>
     </template>
     <fileUpload />
-    <myDatePicker />
+    <div class="date">
+      <myDatePicker @onUpdate="(e) => (date = e)" />
+      {{ date }}
+    </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import axios from 'axios';
 
 // Store
 import { useDefaultStore } from './stores/default.js';
+const { state: defaultState, action: defaultAction } = useDefaultStore();
 
 // Components
 import fileUpload from './components/fileUpload.vue';
 import myDatePicker from './components/myDatePicker.vue';
 import Multiselect from 'vue-multiselect';
 import 'vue-multiselect/dist/vue-multiselect.css';
-
-// store
-const { state: defaultState, action: defaultAction } = useDefaultStore();
 
 // variable
 const options = reactive(['korea', 'china', 'canada']);
@@ -44,6 +45,7 @@ const yon = reactive({
   answer: '',
   image: ''
 });
+const date = ref();
 
 const onUpdate = (value) => {
   defaultState.selectedValue = value;
