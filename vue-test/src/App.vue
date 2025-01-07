@@ -21,6 +21,14 @@
       <myDatePicker @onUpdate="(e) => (date = e)" />
       {{ date }}
     </div>
+    <button @click="show = !show">토글</button>
+    <Transition
+      @enter="(e) => console.log('enter')"
+      @after-enter="(e) => console.log('after-enter')"
+      @leave="(e) => console.log('leave')"
+      @after-leave="(e) => console.log('after-leave')"
+      ><p v-if="show">안녕</p></Transition
+    >
   </div>
 </template>
 
@@ -46,6 +54,7 @@ const yon = reactive({
   image: ''
 });
 const date = ref();
+const show = ref(false);
 
 const onUpdate = (value) => {
   defaultState.selectedValue = value;
@@ -68,5 +77,20 @@ const getYesOrNo = () => {
 .multiselect {
   width: 50%;
   margin: 50px;
+}
+.v-enter-active,
+.v-leave-active {
+  width: 200px;
+  background-color: #d33;
+  transition:
+    opacity 2s ease,
+    width 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  background-color: #d33;
+  opacity: 0;
+  width: 100px;
 }
 </style>
