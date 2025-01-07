@@ -4,6 +4,7 @@ class MyClicker extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     const button = document.createElement("button");
     button.textContent = "Click me";
+    button.type = "button";
     button.addEventListener("click", () => {
       console.log("MyClicker clicked!");
     });
