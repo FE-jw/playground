@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<title>node-express example</title>
+</head>
+<body>
+	<h1>a, <%= name %>!</h1> 
+	<button id="myButton" type="button">Get Name</button>
+	<script>
+		const button = document.getElementById('myButton');
+	
+		button.addEventListener('click', () => {
+		  fetch('/api/name')  // Make a request to /api/name
+			.then(response => {
+			  if (!response.ok) {
+				throw new Error(`HTTP error! ${response.status}`); // Handle errors
+			  }
+			  return response.json(); // Parse the JSON response
+			})
+			.then(data => {
+			  console.log(data); // Log the 'name' property
+			})
+			.catch(error => {
+			  console.error('Error fetching data:', error); // Log any errors
+			});
+		});
+	  </script>
+</body>
+</html>
