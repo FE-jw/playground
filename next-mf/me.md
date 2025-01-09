@@ -1,0 +1,1 @@
+<!-- https://velog.io/@dfd1123/Next.js-turborepo-module-federation-%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-MFA-%EA%B5%AC%ED%98%84 -->
