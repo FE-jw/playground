@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<title>일부 영역만 vue 적용할 수 있는지</title>
+	<style>
+		*	{margin:0;padding:0;}
+		html	{-webkit-text-size-adjust:none;}
+		body	{line-height:1.3;font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;font-size:16px;color:#000;}
+		ul,dl,ol	{list-style:none;}
+		[v-cloak]	{display:none;}
+	</style>
+</head>
+<body>
+<div class="wrap">
+	<header v-cloak data-v-header>
+		<p v-text="msg"></p>
+		<button type="button" @click="handleClick">리스트 토글 버튼</button>
+		<ul v-if="isVisible">
+			<li v-for="item in items" :key="item">{{ item }}</li>
+		</ul>
+	</header>
+	<section>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, ab!
+	</section>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="v-header.js"></script>
+</body>
+</html>
