@@ -1,9 +1,8 @@
-const { createApp } = Vue;
-const selector = '[data-v-header]';
+const targetElement = '[data-v-header]';
 
-createApp({
+Vue.createApp({
 	setup(){
-		const msg = Vue.ref('Vue.js가 header에 적용되었습니다!');
+		const msg = Vue.ref('SUCCESS');
 		const handleClick = evt => {
 			isVisible.value = !isVisible.value;
 		};
@@ -12,13 +11,9 @@ createApp({
 
 		// 스타일 정의
 		const styles = `
-			${selector} {
-				background-color: #f0f0f0;
-				padding: 20px;
-				border: 1px solid #ccc;
-			}
-			${selector} p	{color:#d33;}
-			${selector} button	{margin-top:10px;padding:10px 20px;border:none;line-height:1.2;font-size:16px;color:#fff;background-color:#000;cursor:pointer;}
+			${targetElement} {padding:20px;border:1px solid #ccc;background-color:#f0f0f0;}
+			${targetElement} p	{color:#d33;}
+			${targetElement} button	{margin-top:10px;padding:10px 20px;border:none;line-height:1.2;font-size:16px;color:#fff;background-color:#000;cursor:pointer;}
 		`;
   
 		const styleTag = document.createElement('style');
@@ -26,5 +21,5 @@ createApp({
 		document.head.appendChild(styleTag);
 
 		return { handleClick, msg, items, isVisible };
-	},
-}).mount(selector);
+	}
+}).mount(targetElement);
