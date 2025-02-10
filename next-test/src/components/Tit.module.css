@@ -6,3 +6,7 @@
   color: #d33;
   background: #000 url('/img/100.jpg') no-repeat 100% 50% / auto 100%;
 }
+
+.sub {
+  color: #000;
+}
