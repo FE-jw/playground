@@ -1,3 +1,9 @@
+import Btn from '@/components/btn';
+
 export default function Home() {
-  return <>app-4-redux</>;
+  return (
+    <>
+      <Btn />
+    </>
+  );
 }
