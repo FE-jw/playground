@@ -23,7 +23,7 @@ export default function Home() {
       <BtnCount />
       <MyBtn status="default" />
       <MySwiper list={tempList} onClickBtn={handleClickBtn} />
-      <MyTest />
+      <MyTest footer={<span>Lorem, ipsum dolor.</span>} />
     </Provider>
   );
 }
