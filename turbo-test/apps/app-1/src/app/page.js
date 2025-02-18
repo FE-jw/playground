@@ -18,10 +18,15 @@ export default function Home() {
     console.log(e);
   };
 
+  const handleClickBtn2 = text => {
+    console.log(text);
+  };
+
   return (
     <Provider store={store}>
       <BtnCount />
-      <MyBtn status="default" />
+      <MyBtn status="default" onClick={() => console.log('this')} />
+      <MyBtn status="default" onClick={handleClickBtn2} />
       <MySwiper list={tempList} onClickBtn={handleClickBtn} />
       <MyTest footer={<span>Lorem, ipsum dolor.</span>} />
     </Provider>

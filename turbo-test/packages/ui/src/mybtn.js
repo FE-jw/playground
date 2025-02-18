@@ -1,9 +1,12 @@
 'use client';
 import style from './mybtn.module.css';
+import {useState} from 'react';
 
 function mybtn(props) {
+  const [text, setText] = useState('default text');
+
   const handleClick = () => {
-    console.log('handleClick');
+    props.onClick(text);
   };
 
   return (
