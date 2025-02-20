@@ -11,6 +11,7 @@ import MySwiper from '@repo/ui/myswiper';
 // 컴포넌트
 import BtnCount from '@/components/BtnCount';
 import MyTest from '@/components/MyTest';
+import MyMail from '@/components/MyMail';
 
 export default function Home() {
   const tempList = [{name: 'jw'}, {name: 'a'}, {name: 'b'}, {name: 'c'}];
@@ -34,6 +35,7 @@ export default function Home() {
       <MyBtn status="default" onClick={handleClickBtn2} />
       <MySwiper list={tempList} onClickBtn={handleClickBtn} />
       <MyTest footer={<span>Lorem, ipsum dolor.</span>} />
+      <MyMail />
     </Provider>
   );
 }
