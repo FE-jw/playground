@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<title>React CDN Example</title>
+	<style>
+		*	{margin:0;padding:0;}
+		body	{line-height:1.3;font-family:'Pretendard', Arial, Helvetica, sans-serif;font-size:14px;font-weight:300;color:#000;}
+		.UISection	{position:relative;}
+		.UIImg	{vertical-align:top;}
+		.UIBtn	{border:none;border-radius:0;font:inherit;color:#fff;background-color:#000;cursor:pointer;}
+	</style>
+</head>
+<body>
+<div class="wrap" data-cnt="1">
+	<!-- <div id="app"></div> -->
+	<!-- <div id="btn"></div> -->
+</div>
+<!-- 개발용 -->
+<script crossorigin src="./react.development.js"></script>
+<script crossorigin src="./react-dom.development.js"></script>
+<!-- // 개발용 -->
+<!-- 배포용 -->
+<!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script> -->
+<!-- <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script> -->
+<!-- // 배포용 -->
+<script src="./babel.min.js"></script>
+<script type="text/babel" src="./my-react.js"></script>
+</body>
+</html>
