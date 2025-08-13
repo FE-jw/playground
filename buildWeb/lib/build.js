@@ -9,7 +9,7 @@ const buildManager = {
   srcDir: path.join(__dirname, '..', 'src'),
   distDir: path.join(__dirname, '..', '.dist'),
   langDir: path.join(__dirname, '..', 'lang'),
-  templateFile: path.join(__dirname, '..', 'src', 'index.html'),
+  templateFile: path.join(__dirname, '..', 'src', 'index.njk'),
   compileTemplates() {
     nunjucks.configure(path.join(__dirname, '..', 'src'), { autoescape: true });  // Nunjucks 환경 설정
 
@@ -33,12 +33,12 @@ const buildManager = {
       const srcPath = path.join(src, entry.name);
       const destPath = path.join(dest, entry.name);
 
-      // src 폴더 바로 밑의 index.html, .scss, .js 파일만 제외
+      // src 폴더 바로 밑의 index.njk, .scss, .js 파일만 제외
       if (
         isRoot &&
         entry.isFile() &&
         (
-          entry.name === 'index.html' ||
+          entry.name === 'index.njk' ||
           entry.name.endsWith('.scss') ||
           entry.name.endsWith('.js')
         )
