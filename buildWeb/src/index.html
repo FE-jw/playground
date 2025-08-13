@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="format-detection" content="telephone=no">
+	<title>build to {{title}}</title>
+{% if lang != "ja" %}
+	<link rel="stylesheet" href="ui_test.min.css">
+{% else %}
+	<link rel="stylesheet" href="ui_test_ja.min.css">
+{% endif %}
+</head>
+<body>
+<div class="wrap {{title}}">
+{% if lang != "ja" %}
+	<img src="img/{{lang}}.jpg" alt="">
+	{{title}}{{title}}<br>aaaaaaaaaㅠsaa
+	{{title}}ㅁㅁs
+	plaaaaaa
+	<!-- 주석 -->
+	{{desc}}
+	<p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, consequuntur!</p>
+	<p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, consequuntur!</p>
+	{{desc}}
+	<img src="img/img_1.svg" alt="">
+	<p class="only_ko">ko ko ko Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, accusamus.</p>
+{% else %}
+	<!-- ja 주석 -->
+	{{title}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, aliquam!
+	<p>{{desc}}</p>
+	<p>{{lang}}</p>
+{% endif %}
+</div>
+<script src="js/calc.js"></script>
+<script src="ui_test.min.js"></script>
+</body>
+</html>
