@@ -30,6 +30,9 @@ const buildManager = {
     src = src || this.srcDir;
     dest = dest || this.distDir;
     fs.readdirSync(src, { withFileTypes: true }).forEach(entry => {
+      // _로 시작하는 폴더는 dist에 생성하지 않음
+      if (entry.isDirectory() && entry.name.startsWith('_')) return;
+
       const srcPath = path.join(src, entry.name);
       const destPath = path.join(dest, entry.name);
 
@@ -56,6 +59,9 @@ const buildManager = {
     src = src || this.srcDir;
     dest = dest || this.distDir;
     fs.readdirSync(src, { withFileTypes: true }).forEach(entry => {
+      // _로 시작하는 폴더는 dist에 생성하지 않음
+      if (entry.isDirectory() && entry.name.startsWith('_')) return;
+
       const srcPath = path.join(src, entry.name);
       const destPath = path.join(dest, entry.name.replace(/\.scss$/, '.min.css'));
 
