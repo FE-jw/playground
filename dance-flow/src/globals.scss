@@ -35,23 +35,3 @@ body {
 :root {
   --border-color: #ccc;
 }
-
-.wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  border: 1px solid var(--border-color);
-}
-.board {
-  display: block;
-  width: 100%;
-  height: auto;
-
-  &-line {
-    stroke: var(--border-color);
-    stroke-width: 0.05;
-  }
-
-  &-dancer {
-    cursor: pointer;
-  }
-}
