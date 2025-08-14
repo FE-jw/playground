@@ -2,17 +2,19 @@ import { Fragment } from 'react';
 import styled from 'styled-components';
 
 interface BoardProps {
-  gridSize?: number;
-  cellSize?: number;
+  gridSize: number;
+  cellSize: number;
   children?: React.ReactNode;
+  [key: string]: unknown;
 }
 
-export default function Board({ gridSize = 10, cellSize = 40, children }: BoardProps) {
+export default function Board({ gridSize = 10, cellSize = 40, children, ...props }: BoardProps) {
   return (
     <StyledBoard
       width={gridSize * cellSize}
       height={gridSize * cellSize}
       viewBox={`0 0 ${gridSize * cellSize} ${gridSize * cellSize}`}
+      {...props}
     >
       {/* 바둑판 그리드 */}
       {Array.from({ length: gridSize + 1 }).map((_, i) => (
