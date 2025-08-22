@@ -1,0 +1,11 @@
+{% macro txt(text, type="p") %}
+	{% if type == "span" %}
+		<div style="display:flex;gap:20px;">
+			<span>{{ text }}</span>
+			<span>{{ text }}</span>
+			<span>{{ text }}</span>
+		</div>
+	{% else %}
+		<p>{{ text }}</p>
+	{% endif %}
+{% endmacro %}
