@@ -2,7 +2,7 @@ const {useEffect, useState} = React;
 
 
 const App = () => {
-	const [cnt, setCnt] = useState(document.querySelector('.wrap').getAttribute('data-cnt'));
+	const [cnt, setCnt] = useState(Number(document.querySelector('.wrap').getAttribute('data-cnt')));
 	useEffect(() => {
 		console.log('useEffect >> App mounted');
 	}, []);
@@ -28,9 +28,11 @@ const App = () => {
 			{cnt}
 			<h1>Lorem, ipsum dolor.</h1>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, earum!</p>
-			<UIBtn className="my-class" onClick={() => console.log('버튼 1')}>버튼 1</UIBtn>
-			<UIBtn onClick={() => console.log('버튼 2')}>버튼 2</UIBtn>
-			<UIImg src="https://placehold.co/50/000/fff" />
+			<div><UIBtn className="my-class" onClick={() => console.log('버튼 1')}>버튼 1</UIBtn></div>
+			<div><UIBtn onClick={() => console.log('버튼 2')}>버튼 2</UIBtn></div>
+			<div><UIBtn onClick={() => setCnt(cnt - 1)}>cnt down</UIBtn></div>
+			<div><UIBtn onClick={() => setCnt(cnt + 1)}>cnt up</UIBtn></div>
+			<div><UIImg src="https://placehold.co/50/000/fff" /></div>
 		</UISection>
 	);
 };
