@@ -1,8 +1,0 @@
-{
-  "editor.formatOnSave": true,
-  "prettier.requireConfig": true, // 프로젝트에 .prettierrc 파일이 있는 경우에만 Prettier를 실행하도록 설정
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-}
