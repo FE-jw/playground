@@ -1,29 +1,27 @@
 import './App.css';
-import axios, { HttpStatusCode } from 'axios';
 import {useQuery} from '@tanstack/react-query';
 import {useDefaultStore} from './store/useDefaultStore';
-
-interface dataProps {
-  id: number;
-  title: string;
-  body: string;
-}
+import {postsProps} from './types';
 
 function App() {
   const {count, inc} = useDefaultStore();
 
+  // 데이터 패칭 함수
   const queryFn = async () => {
     console.log('queryFn called');
     
     try{
-      const {data} = await axios.get('https://jsonplaceholder.typicode.com/posts')    
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
   
-      return data as dataProps[];
+      return data as postsProps[];
     }catch{
       console.log('error caught in queryFn');
     }
   }
   
+  // 스토어의 count 값이 변경되면 쿼리 재실행
   const { data, isLoading, error } = useQuery({
     queryKey: [count],
     queryFn,
@@ -39,7 +37,8 @@ function App() {
       {!isLoading && <ul>
         {data?.slice(0, 10).map((item) => (
           <li key={item.id}>
-            {item.title}: {item.body}
+            <strong>({item.id}) {item.title}</strong>
+            <p>{item.body}</p>
           </li>
         ))}
       </ul>
