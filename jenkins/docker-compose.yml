@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkins
+    user: "0:0" # 권한 문제 회피(윈도우 볼륨)
+    ports:
+      - "8080:8080"   # Jenkins UI
+      - "50000:50000" # JNLP 에이전트
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    restart: unless-stopped
+
+  # 선택: 사전 설치 플러그인(Blue Ocean 등)을 위한 init 컨테이너
+  jenkins-plugin:
+    image: jenkins/jenkins:lts-jdk17
+    depends_on:
+      - jenkins
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    entrypoint: ["/bin/sh","-c"]
+    command: >
+      jenkins-plugin-cli
+      --plugins
+      "blueocean workflow-aggregator git github docker-workflow pipeline-stage-view"
+    restart: "no"
+
+  agent:
+    image: jenkins/inbound-agent:latest-jdk17
+    container_name: jenkins-agent
+    depends_on:
+      - jenkins
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+      - JENKINS_AGENT_NAME=docker-agent-1
+      - JENKINS_SECRET=CHANGE_ME # 실제 에이전트 등록 시 생성되는 시크릿으로 교체
+    restart: unless-stopped

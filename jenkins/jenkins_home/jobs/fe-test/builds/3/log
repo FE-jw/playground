@@ -1,0 +1,9 @@
+Started by user unknown or anonymous
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/fe-test
+[fe-test] $ /bin/sh -xe /tmp/jenkins1731380043143041751.sh
++ echo test 입니다
+test 입니다
++ javac -version
+javac 17.0.17
+Finished: SUCCESS
