@@ -1,7 +1,7 @@
 {
   "name": "js-sdk-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "javascript SDK test project",
   "main": "./src/index.js",
   "scripts": {
     "dev": "webpack serve --watch --mode development",
@@ -20,5 +20,6 @@
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3"
-  }
+  },
+  "packageManager": "yarn@3.8.7"
 }
