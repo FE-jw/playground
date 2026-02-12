@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import {
   ClassicEditor,
+  GeneralHtmlSupport,
   Base64UploadAdapter,
   Essentials,
   Paragraph,
@@ -25,6 +26,7 @@ export default function Editor() {
   const config: any = {
     licenseKey: 'GPL',
     plugins: [
+      GeneralHtmlSupport,
       Base64UploadAdapter,
       Essentials,
       Paragraph,
@@ -66,6 +68,16 @@ export default function Editor() {
       toolbar: ['imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|', 'imageTextAlternative'],
       styles: ['alignLeft', 'alignCenter', 'alignRight'],
       defaultStyle: 'left'
+    },
+    htmlSupport: {
+      allow: [
+        {
+          name: /.*/, // 모든 태그 허용 (또는 'div', 'dl' 등 특정 태그)
+          attributes: true, // 모든 속성 허용
+          classes: true, // 모든 클래스 허용
+          styles: true // 모든 스타일 허용
+        }
+      ]
     }
   };
 
@@ -75,6 +87,14 @@ export default function Editor() {
   };
   const handleClearContent = () => {
     setContent('');
+  };
+  const handleAddUI = () => {
+    setContent(`<dl>
+      <dt style="font-weight:bold;font-size:3em;">타이틀</dt>
+      <dd style="background-color:lightyellow;">첫 번째 항목</dd>
+      <dd>두 번째 항목</dd>
+      <dd>세 번째 항목</dd>
+    </dl>`);
   };
 
   useEffect(() => {
@@ -87,16 +107,25 @@ export default function Editor() {
         editor={ClassicEditor}
         config={config}
         data={content}
-        onChange={(evt, editor) => {
+        onChange={(_, editor) => {
           setContent(editor.getData());
         }}
       />
-      <button type="button" onClick={handleChangeContent}>
-        클릭하면 에디터에 내용 추가됨
-      </button>
-      <button type="button" onClick={handleClearContent}>
-        클릭하면 에디터에 내용 제거
-      </button>
+      <div>
+        <button type="button" onClick={handleChangeContent}>
+          클릭하면 에디터에 내용 추가됨
+        </button>
+      </div>
+      <div>
+        <button type="button" onClick={handleClearContent}>
+          클릭하면 에디터에 내용 제거
+        </button>
+      </div>
+      <div>
+        <button type="button" onClick={handleAddUI}>
+          클릭하면 복잡한 UI 추가됨
+        </button>
+      </div>
     </>
   );
 }
