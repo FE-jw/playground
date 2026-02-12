@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import {
   ClassicEditor,
@@ -68,5 +69,34 @@ export default function Editor() {
     }
   };
 
-  return <CKEditor editor={ClassicEditor} config={config} />;
+  const [content, setContent] = useState<string>('');
+  const handleChangeContent = () => {
+    setContent('<p>안녕하세요</p>');
+  };
+  const handleClearContent = () => {
+    setContent('');
+  };
+
+  useEffect(() => {
+    console.log('content changed:', content);
+  }, [content]);
+
+  return (
+    <>
+      <CKEditor
+        editor={ClassicEditor}
+        config={config}
+        data={content}
+        onChange={(evt, editor) => {
+          setContent(editor.getData());
+        }}
+      />
+      <button type="button" onClick={handleChangeContent}>
+        클릭하면 에디터에 내용 추가됨
+      </button>
+      <button type="button" onClick={handleClearContent}>
+        클릭하면 에디터에 내용 제거
+      </button>
+    </>
+  );
 }
