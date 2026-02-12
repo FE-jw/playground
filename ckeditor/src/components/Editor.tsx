@@ -20,9 +20,6 @@ import {
 import 'ckeditor5/ckeditor5.css';
 import { CustomWidget } from './EditorInsertVote'; // 커스텀 위젯
 
-// Emoji 플러그인
-// import Emoji from '@phudak/ckeditor5-emoji/src/emoji';
-
 export default function Editor() {
   const config: any = {
     licenseKey: 'GPL',
@@ -42,7 +39,6 @@ export default function Editor() {
       ImageStyle,
       ImageToolbar,
       ImageUpload,
-      // Emoji,
       CustomWidget
     ],
     toolbar: {
@@ -58,9 +54,9 @@ export default function Editor() {
         'alignment',
         '|',
         'link',
+        '|',
         'imageUpload',
         '|',
-        // 'emoji',
         'customWidget',
         '|'
       ]

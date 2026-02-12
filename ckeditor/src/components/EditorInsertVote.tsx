@@ -11,7 +11,7 @@ export class CustomWidget extends Plugin {
       const view = new ButtonView(locale);
 
       view.set({
-        label: 'Custom Widget',
+        label: 'Insert Vote',
         icon: IconPlus,
         tooltip: true
       });

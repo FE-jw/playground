@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "prettier": "^3.8.1",
-    "sass": "^1.97.3"
+    "sass": "^1.97.3",
+    "ts-loader": "^9.5.4"
   }
 }
