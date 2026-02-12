@@ -18,9 +18,13 @@ import {
   ImageUpload
 } from 'ckeditor5';
 import 'ckeditor5/ckeditor5.css';
+import { CustomWidget } from './EditorInsertVote'; // 커스텀 위젯
+
+// Emoji 플러그인
+// import Emoji from '@phudak/ckeditor5-emoji/src/emoji';
 
 export default function Editor() {
-  const config = {
+  const config: any = {
     licenseKey: 'GPL',
     plugins: [
       Base64UploadAdapter,
@@ -37,7 +41,9 @@ export default function Editor() {
       ImageResize,
       ImageStyle,
       ImageToolbar,
-      ImageUpload
+      ImageUpload,
+      // Emoji,
+      CustomWidget
     ],
     toolbar: {
       items: [
@@ -53,17 +59,16 @@ export default function Editor() {
         '|',
         'link',
         'imageUpload',
+        '|',
+        // 'emoji',
+        'customWidget',
         '|'
       ]
     },
     image: {
-      styles: [
-        { name: 'alignLeft', title: '좌측 정렬', icon: 'left', className: 'image-style-align-left' },
-        { name: 'alignCenter', title: '가운데 정렬', icon: 'center', className: 'image-style-align-center' },
-        { name: 'alignRight', title: '우측 정렬', icon: 'right', className: 'image-style-align-right' }
-      ],
       toolbar: ['imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|', 'imageTextAlternative'],
-      defaultStyle: 'alignLeft'
+      styles: ['alignLeft', 'alignCenter', 'alignRight'],
+      defaultStyle: 'left'
     }
   };
 
