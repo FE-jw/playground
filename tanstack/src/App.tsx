@@ -4,7 +4,7 @@ import {useDefaultStore} from './store/useDefaultStore';
 import {postsProps} from './types';
 
 function App() {
-  const {count, inc} = useDefaultStore();
+  const {count, setCount} = useDefaultStore();
 
   // 데이터 패칭 함수
   const queryFn = async () => {
@@ -23,7 +23,7 @@ function App() {
   
   // 스토어의 count 값이 변경되면 쿼리 재실행
   const { data, isLoading, error } = useQuery({
-    queryKey: [count],
+    queryKey: [count],  // 스토어에 있는 값을 쿼리키로 사용
     queryFn,
   });
 
@@ -31,7 +31,7 @@ function App() {
   
   return (
     <>
-    <button onClick={inc}>Refresh</button>
+    <button onClick={setCount}>Refresh</button>
      <div style={{ padding: 16 }}>
       {isLoading && <div>Loading...</div>}
       {!isLoading && <ul>
